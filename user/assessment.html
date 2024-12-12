@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assessment</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/bee494c90d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-content">
+        <img
+          class="logo-sidebar"
+          src="../assets/Logo/Logo 1 removebg.png"
+          alt="logo"
+        />
+        <div class="sidebar-item">
+          <div class="menu-item" onclick="location.href='index.html'">
+            <i class="fa-solid fa-house" style="color: #ffffff"></i>
+            <span>Dashboard</span>
+          </div>
+          <div class="menu-item" onclick="location.href='attendance.html'">
+            <i class="fa-solid fa-clipboard-user" style="color: #ffffff"></i>
+            <span>Attendance</span>
+          </div>
+          <div class="menu-item" onclick="location.href='activity.html'">
+            <i class="fa-solid fa-chart-line" style="color: #ffffff"></i>
+            <span>Activity</span>
+          </div>
+          <div class="menu-item" onclick="location.href='history.html'">
+            <i class="fa-solid fa-clock-rotate-left" style="color: #ffffff"></i>
+            <span>History</span>
+          </div>
+          <div class="menu-item" onclick="location.href='project.html'">
+            <i class="fa-solid fa-folder-plus" style="color: #ffffff"></i>
+            <span>Project</span>
+          </div>
+          <div class="menu-item" onclick="location.href='assessment.html'">
+            <i class="fa-solid fa-award" style="color: #ffffff"></i>
+            <span>Assessment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+      <div class="footer-left">
+        <h3>Hello, Intern!</h3>
+        <h5>Achmad Fikri Syofian</h5>
+      </div>
+      <div class="footer-right">
+        <img class="logo-footer-right" src="../assets/Pic/Logo 3 PT. Kinarya Utama Teknik.jpeg" alt="">
+        <i
+          class="fa-solid fa-bars"
+          style="color: black"
+          onclick="toggleDropdown()"
+        ></i>
+        <!-- Setting -->
+        <div id="dropdown-menu" class="dropdown-menu">
+          <a href="reset_password.html">Reset Password</a>
+          <a href="login.html">Log Out</a>
+        </div>
+      </div>
+      <!-- Content Activity -->
+      <h4 class="h4-card-activity">Assessment</h4>
+      <div id="card-activity" class="card-activity">
+        <img src="../Pic/worker 3_hd.jpg" alt="" />
+        <div class="overlay-activity"></div>
+        <!-- Form Activity -->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-10 mx-auto"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function toggleDropdown() {
+      const dropdownMenu = document.getElementById("dropdown-menu");
+      dropdownMenu.style.display =
+        dropdownMenu.style.display === "block" ? "none" : "block";
+    }
+
+    // Menutup dropdown jika mengklik di luar dropdown
+    window.onclick = function (event) {
+      if (!event.target.matches(".fa-bars")) {
+        const dropdowns = document.getElementsByClassName("dropdown-menu");
+        for (let i = 0; i < dropdowns.length; i++) {
+          const openDropdown = dropdowns[i];
+          if (openDropdown.style.display === "block") {
+            openDropdown.style.display = "none";
+          }
+        }
+      }
+    };
+  </script>
+</html>
