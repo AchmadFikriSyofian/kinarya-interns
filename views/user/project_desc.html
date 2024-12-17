@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Desc</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/bee494c90d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- sidebar -->
+     <div data-include="../partials/sidebar.html"></div>
+
+    <!-- Main -->
+    <div class="main">
+      <div data-include="../partials/header.html"></div>
+      <div class="content"></div>
+      <!-- Card Project Desc -->
+      <div class="project-desc-heading">
+        <div class="row align-items-start">
+          <div class="col">
+            <i
+              class="fa-solid fa-circle-chevron-left"
+              onclick="history.back()"
+            ></i>
+          </div>
+          <div class="col">
+            <h4 class="h4-project-desc">Project</h4>
+          </div>
+          <div class="col">
+            <i
+              class="fa-solid fa-pen-to-square"
+              onclick="updateDesc(this)"
+            ></i>
+          </div>
+        </div>
+      </div>
+      <div class="card-project-desc">
+        <img src="/public/pic/worker 3_hd.jpg" alt="worker and tower bts" />
+        <div class="overlay"></div>
+        <!-- Content -->
+        <div class="content-project-title">
+          <div class="row align-items-start">
+            <div class="row">
+              <h5>Project Title</h5>
+            </div>
+            <div class="row" style="font-size: 25px">
+              <p id="project-title">Kinarya Interns</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-project-desc">
+          <div class="row align-items-start">
+            <div class="row">
+              <h5>Project Description</h5>
+            </div>
+            <div class="row">
+              <p id="project-desc">
+                Kinarya Interns is a web-based platform designed to streamline
+                internship processes. Key features include attendance tracking,
+                daily activity reporting, project management, and comprehensive
+                history logs for attendance and reports. This system ensures
+                efficient monitoring and documentation of intern activities.
+              </p>
+            </div>
+          </div>
+
+          <script src="/public/js/include.js"></script>
+          
+        </div>
+        <script>
+          function toggleDropdown() {
+            const dropdownMenu = document.getElementById("dropdown-menu");
+            dropdownMenu.style.display =
+              dropdownMenu.style.display === "block" ? "none" : "block";
+          }
+
+          // Menutup dropdown jika mengklik di luar dropdown
+          window.onclick = function (event) {
+            if (!event.target.matches(".fa-bars")) {
+              const dropdowns =
+                document.getElementsByClassName("dropdown-menu");
+              for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.style.display === "block") {
+                  openDropdown.style.display = "none";
+                }
+              }
+            }
+          };
+        </script>
+
+        <!-- modal -->
+         <div id="update-desc" class="update-desc" style="display: none">
+          <div class="update-desc-content">
+          <h4 style="color:#0E336C">Insert Your Change</h4><br>
+            <span class="close" onclick="closeModal()">&times;</span>
+            <form onsubmit="updateProjectDesc(event)">
+              <label for="ptitle">Project Title</label><br>
+              <input type="text" name="ptitle" id="ptitle" value=""><br><br>
+              <label for="pdesc">Project Description</label><br>
+              <textarea class="form-control" id="pdesc" rows="6" style="border: 0.1px solid"></textarea><br><br>
+              <button type="submit" value="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Submit</button>
+            </form>
+          </div>
+         </div>
+
+         <script>
+          function updateDesc() {
+            document.getElementById("update-desc").style.display = "block";
+          }
+
+          function closeModal() {
+            document.getElementById("update-desc").style.display = "none";
+          }
+
+          function updateProjectDesc(event) {
+            event.preventDefault();
+
+            const projectTitle = document.getElementById("ptitle").value;
+            const projectDescription = document.getElementById("pdesc").value;
+            
+            document.getElementById("project-title").textContent = projectTitle;
+            document.getElementById("project-desc").textContent = projectDescription;
+
+            closeModal();
+          }
+         </script>
+      </div>
+    </div>
+  </body>
+</html>

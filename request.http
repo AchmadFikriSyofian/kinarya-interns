@@ -1,0 +1,21 @@
+Access-Control-Allow-Origin: http://localhost:3000
+Access-Control-Allow-Method: GET, POST, PUT , DELETE
+Access-Control-Allow-Headers: Content-Type
+
+### Auth
+
+### Login
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "email": "kai.enim@gmail.com",
+    "password": "kaienim"
+}
+
+### Get Me
+GET http://localhost:3000/api/v1/auth/me
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzM0NDU0MTMzfQ.afcz5jAnH-BDla83mAJHnxnj4QQLQHFCa7jlIDD_0Fc
+
+
+### 
