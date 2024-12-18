@@ -17,6 +17,9 @@ app.get('/', (req, res) => {
 const authRouter = require('./routes/auth.routes');
 app.use('/api/v1/auth', authRouter);
 
+const activityRouter = require('./routes/activity.routes');
+app.use('/api/v1/activity', activityRouter);
+
 app.listen(PORT, () => {
     console.log(`Server started at http://localhost:${PORT}`);
 })

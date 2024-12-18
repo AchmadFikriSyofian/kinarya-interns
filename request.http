@@ -9,8 +9,8 @@ POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "email": "kai.enim@gmail.com",
-    "password": "kaienim"
+    "email": "syofian.fikri@gmail.com",
+    "password": "fikriganteng123"
 }
 
 ### Get Me
@@ -18,4 +18,26 @@ GET http://localhost:3000/api/v1/auth/me
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzM0NDU0MTMzfQ.afcz5jAnH-BDla83mAJHnxnj4QQLQHFCa7jlIDD_0Fc
 
 
-### 
+
+
+
+### Activity
+
+### Add Activity
+POST http://localhost:3000/api/v1/activity
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM0NTEwODYyfQ.EjlPYLRwYRsHjNW-sF0PLgil-IrIZDwi44tL8-x1kx4
+Content-Type: application/json
+
+{
+    "activity": "Tes Drive in Site",
+    "desc_activity": "Pemasangan Alat baru yaitu Access Point pada Site, kemudian Tes Drive jaringan terhadap alat tersebut."
+}
+
+### Get All Activity
+GET http://localhost:3000/api/v1/activity?page=2&limit=1
+Content-Type: application/json
+
+### GET User Activities
+GET http://localhost:3000/api/v1/activity/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM0NTEwODYyfQ.EjlPYLRwYRsHjNW-sF0PLgil-IrIZDwi44tL8-x1kx4
+Content-Type: application/json

@@ -1,12 +1,12 @@
 const mysql = require('mysql2');
 const { connection } = require('../config/db');
 const jwt = require('jsonwebtoken');
-const {JWT_SECRET_KEY} = process.env;
+const { JWT_SECRET_KEY } = process.env;
 
 module.exports = {
     login: async (req, res, next) => {
         try {
-            let {email, password} = req.body;
+            let { email, password } = req.body;
     
             if(!email || !password) {
                 return res.status(400).json({
@@ -18,7 +18,7 @@ module.exports = {
             }
 
             // Check Email
-            connection.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
+            connection.query(`SELECT * FROM users WHERE email = ?`, [email], async (err, results) => {
                 if(err) {
                     return res.status(500).json({
                         status: false,
@@ -68,7 +68,7 @@ module.exports = {
         try {
             let { id } = req.user;
 
-            connection.query('SELECT * FROM users WHERE id = ?', [id], (err, results) => {
+            connection.query(`SELECT * FROM users WHERE id = ?`, [id], (err, results) => {
                 if(err) {
                     return res.status(500).json({
                         status: false,
@@ -99,5 +99,5 @@ module.exports = {
         } catch (err) {
             next(err);
         }
-    }
+    },
 }
