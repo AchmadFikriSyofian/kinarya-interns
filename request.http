@@ -4,13 +4,28 @@ Access-Control-Allow-Headers: Content-Type
 
 ### Auth
 
+### Register
+POST http://localhost:3000/api/v1/auth/register
+Content-Type: application/json
+
+{
+    "username": "Deni",
+    "email": "deni@gmail.com",
+    "password": "deni",
+    "no_hp": "084162372713621",
+    "address": "Bekasi",
+    "division": "IT Firmware",
+    "institute": "IDN Solo",
+    "major": "Network"
+}
+
 ### Login
 POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "email": "syofian.fikri@gmail.com",
-    "password": "fikriganteng123"
+    "email": "kai.enim@gmail.com",
+    "password": "kaienim"
 }
 
 ### Get Me
@@ -29,8 +44,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM0NTEw
 Content-Type: application/json
 
 {
-    "activity": "Tes Drive in Site",
-    "desc_activity": "Pemasangan Alat baru yaitu Access Point pada Site, kemudian Tes Drive jaringan terhadap alat tersebut."
+    "activity": "hapus ngab",
+    "desc_activity": "hapus aja cok."
 }
 
 ### Get All Activity
@@ -38,6 +53,20 @@ GET http://localhost:3000/api/v1/activity?page=2&limit=1
 Content-Type: application/json
 
 ### GET User Activities
-GET http://localhost:3000/api/v1/activity/user
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM0NTEwODYyfQ.EjlPYLRwYRsHjNW-sF0PLgil-IrIZDwi44tL8-x1kx4
+GET http://localhost:3000/api/v1/activity/user?page=1&limit=5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM0NTM2MzU3fQ.aaTg_MrdBN7m5nxZvIgAloeuLCNfM6CUwc8ai5FTTsk
+Content-Type: application/json
+
+### Update Activities
+PUT http://localhost:3000/api/v1/activity/13
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM0NTM2MzU3fQ.aaTg_MrdBN7m5nxZvIgAloeuLCNfM6CUwc8ai5FTTsk
+Content-Type: application/json
+
+{
+    "activity": "Create Login Page",
+    "desc_activity": "Creating Login Page using bootstrap, required Email dan Password and little qoutes"
+}
+
+### Delete Activities
+DELETE http://localhost:3000/api/v1/activity/16
 Content-Type: application/json
