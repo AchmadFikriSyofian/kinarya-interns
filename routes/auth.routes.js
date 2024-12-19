@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {register, registerMentor, login, updateUser, updateMentor, getAllUser,
-    getUserById, getAllMentor, getMentorById, deleteUser, getMe} = require('../controller/auth.controllers');
+    getUserById, getAllMentor, getMentorById, deleteUser, deleteMentor, getMe} = require('../controller/auth.controllers');
 const {restrict} = require('../middlewares/auth.middlewares');
 
 router.post('/register', register);
@@ -13,6 +13,7 @@ router.get('/user/:id', getUserById);
 router.get('/mentor', getAllMentor);
 router.get('/mentor/:id', getMentorById);
 router.delete('/user/:id', deleteUser);
+router.delete('/mentor/:id', deleteMentor);
 router.get('/me', restrict, getMe);
 
 module.exports = router;

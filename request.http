@@ -85,9 +85,13 @@ Content-Type: application/json
 DELETE http://localhost:3000/api/v1/auth/user/14
 Content-Type: application/json
 
+### Delete Mentor
+DELETE http://localhost:3000/api/v1/auth/mentor/5
+Content-Type: application/json
+
 ### Get Me
 GET http://localhost:3000/api/v1/auth/me
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzM0NDU0MTMzfQ.afcz5jAnH-BDla83mAJHnxnj4QQLQHFCa7jlIDD_0Fc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM0NTM2MzU3fQ.aaTg_MrdBN7m5nxZvIgAloeuLCNfM6CUwc8ai5FTTsk
 
 
 
@@ -127,3 +131,19 @@ Content-Type: application/json
 ### Delete Activities
 DELETE http://localhost:3000/api/v1/activity/16
 Content-Type: application/json
+
+
+
+
+
+### Project
+
+### Update Project
+PUT http://localhost:3000/api/v1/project
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM0NTM2MzU3fQ.aaTg_MrdBN7m5nxZvIgAloeuLCNfM6CUwc8ai5FTTsk
+Content-Type: application/json
+
+{
+    "project_title": "Login",
+    "project_desc": "Login adalah abalblaalba"
+}

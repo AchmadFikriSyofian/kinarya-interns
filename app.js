@@ -20,6 +20,9 @@ app.use('/api/v1/auth', authRouter);
 const activityRouter = require('./routes/activity.routes');
 app.use('/api/v1/activity', activityRouter);
 
+const projectRouter = require('./routes/project.routes');
+app.use('/api/v1/project', projectRouter);
+
 app.listen(PORT, () => {
     console.log(`Server started at http://localhost:${PORT}`);
 })

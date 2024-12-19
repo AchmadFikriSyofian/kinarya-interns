@@ -557,7 +557,7 @@ module.exports = {
                 return res.status(400).json({
                     status: false,
                     message: 'Bad Request',
-                    err: 'Mentor id is required!',
+                    err: 'Mentor ID is required!',
                     data: null
                 });
             }
@@ -639,6 +639,52 @@ module.exports = {
                 });
             });
 
+        } catch(err) {
+            next(err);
+        }
+    },
+
+    deleteMentor: async(req, res , next) => {
+        try {
+            let {id} = req.params;
+
+            if(!id) {
+                return res.status(400).json({
+                    status: false,
+                    message: 'Bad Request',
+                    err: 'Mentor ID is required',
+                    data: null
+                });
+            }
+
+            connection.query(`SELECT * FROM mentors WHERE id = ?`, [id], (err, results) => {
+                if(err) {
+                    return res.status(500).json({
+                        status: false,
+                        message: 'Internal Server Error',
+                        err: err.message,
+                        data: null
+                    });
+                }
+
+                if(results.length === 0) {
+                    return res.status(404).json({
+                        status: false,
+                        message: 'Not Found',
+                        err: `Mentor with id ${id} doesn\'t Exist`,
+                        data: null
+                    });
+                }
+
+                connection.query(`DELETE FROM mentors WHERE id = ?`, [id], (err, deleteResults) => {
+                    return res.status(200).json({
+                        status: true,
+                        message: 'OK',
+                        err: null,
+                        data: results[0]
+                    });
+                });
+            });
         } catch(err) {
             next(err);
         }
