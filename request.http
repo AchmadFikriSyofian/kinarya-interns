@@ -9,14 +9,25 @@ POST http://localhost:3000/api/v1/auth/register
 Content-Type: application/json
 
 {
-    "username": "Deni",
-    "email": "deni@gmail.com",
-    "password": "deni",
-    "no_hp": "084162372713621",
-    "address": "Bekasi",
-    "division": "IT Firmware",
-    "institute": "IDN Solo",
-    "major": "Network"
+    "username": "Fatih",
+    "email": "fatih@gmail.com",
+    "password": "fatih",
+    "no_hp": "081162732810",
+    "address": "Jakarta",
+    "division": "Accounting",
+    "institute": "Universitas Gunadarma",
+    "major": "Akuntansi"
+}
+
+### Register Mentor
+POST http://localhost:3000/api/v1/auth/register/mentor
+Content-Type: application/json
+
+{
+    "username": "Widya",
+    "email": "widya@gmail.com",
+    "password": "widya",
+    "division": "HR"
 }
 
 ### Login
@@ -26,6 +37,32 @@ Content-Type: application/json
 {
     "email": "kai.enim@gmail.com",
     "password": "kaienim"
+}
+
+### Update User
+PUT http://localhost:3000/api/v1/auth/user/12
+Content-Type: application/json
+
+{
+    "username": "Fatih Alfarizi",
+    "email": "fatih@gmail.com",
+    "password": "fatih",
+    "no_hp": "081162732810",
+    "address": "Jakarta",
+    "division": "Accounting",
+    "institute": "Universitas Gunadarma",
+    "major": "Akuntansi"
+}
+
+### Update Mentor
+PUT http://localhost:3000/api/v1/auth/mentor/4
+Content-Type: application/json
+
+{
+    "username": "Widya Salim",
+    "email": "widya@gmail.com",
+    "password": "widya",
+    "division": "HR"
 }
 
 ### Get Me
