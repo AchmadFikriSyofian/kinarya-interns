@@ -73,6 +73,18 @@ Content-Type: application/json
 GET http://localhost:3000/api/v1/auth/user/12
 Content-Type: application/json
 
+### Get All Mentor
+GET http://localhost:3000/api/v1/auth/mentor?page=2&limit=2
+Content-Type: application/json
+
+### Get Mentor By Id
+GET http://localhost:3000/api/v1/auth/mentor/3
+Content-Type: application/json
+
+### Delete User
+DELETE http://localhost:3000/api/v1/auth/user/14
+Content-Type: application/json
+
 ### Get Me
 GET http://localhost:3000/api/v1/auth/me
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzM0NDU0MTMzfQ.afcz5jAnH-BDla83mAJHnxnj4QQLQHFCa7jlIDD_0Fc

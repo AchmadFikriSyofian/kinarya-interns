@@ -499,6 +499,145 @@ module.exports = {
 
     getAllMentor: async (req, res, next) => {
         try {
+            const page = parseInt(req.query.page) || 1;
+            const limit = parseInt(req.query.limit) || 10;
+            const offset = (page - 1) * limit;
+
+            connection.query(`SELECT COUNT(*) AS count FROM mentors`, (err, results) => {
+                if(err) {
+                    return res.status(500).json({
+                        status: false,
+                        message: 'Internal Server Error',
+                        err: err.message,
+                        data: null
+                    });
+                }
+
+                const totalItems = results[0].count;
+
+                connection.query(`SELECT * FROM mentors LIMIT ? OFFSET ?`, [limit, offset], (err, data) => {
+                    if(err) {
+                        return res.status(500).json({
+                            status: false,
+                            message: 'Internal Server Error',
+                            err: err.message,
+                            data: null
+                        });
+                    }
+
+                    if(data.length === 0) {
+                        return res.status(404).json({
+                            status: false,
+                            message: 'Not Found',
+                            err: 'No Mentors Found',
+                            data: null
+                        });
+                    }
+
+                    const pagination = getPagination(req, totalItems, page, limit);
+
+                    return res.status(200).json({
+                        status: true,
+                        message: 'OK',
+                        err: null,
+                        data: data, pagination
+                    });
+                });
+            })
+        } catch(err) {
+            next(err);
+        }
+    },
+
+    getMentorById: async(req, res, next) => {
+        try {
+            let {id} = req.params;
+
+            if(!id) {
+                return res.status(400).json({
+                    status: false,
+                    message: 'Bad Request',
+                    err: 'Mentor id is required!',
+                    data: null
+                });
+            }
+
+            let query = `SELECT * FROM mentors WHERE id = ?`;
+            connection.query(query, [id], (err, results) => {
+                if(err) {
+                    return res.status(500).json({
+                        status: false,
+                        message: 'Internal Server Error',
+                        err: err.message,
+                        data: null
+                    });
+                }
+
+                if(results.length === 0) {
+                    return res.status(404).json({
+                        status: false,
+                        message: 'Not Found',
+                        err: `Mentor with id ${id} doesn\'t Exist`,
+                        data: null
+                    });
+                }
+
+                connection.query(`SELECT * FROM mentors WHERE id = ?`, [id], (err, data) => {
+                    return res.status(200).json({
+                        status: true,
+                        message: 'OK',
+                        err: null,
+                        data: data
+                    });
+                });
+            });
+
+        } catch(err) {
+            next(err);
+        }
+    },
+
+    deleteUser: async(req, res, next) => {
+        try {
+            let {id} = req.params;
+
+            if(!id) {
+                return res.status(400).json({
+                    status: false,
+                    message: 'Bad Request',
+                    err: 'User id is required!',
+                    data: null
+                });
+            }
+
+            connection.query(`SELECT * FROM users WHERE id = ?`, [id], (err, results) => {
+                if(err) {
+                    return res.status(500).json({
+                        status: false,
+                        message: 'Internal Server Error',
+                        err: err.message,
+                        data: null
+                    });
+                }
+
+                if(results.length === 0) {
+                    return res.status(404).json({
+                        status: false,
+                        message: 'Not Found',
+                        err: `User with id ${id} doesn\'t exist`,
+                        data: null
+                    });
+                }
+
+                connection.query(`DELETE FROM users WHERE id = ?`, [id], (err, deleteResults) => {
+                    return res.status(200).json({
+                        status: true,
+                        message: 'OK',
+                        err: null,
+                        data: results[0]
+                    });
+                });
+            });
 
         } catch(err) {
             next(err);
